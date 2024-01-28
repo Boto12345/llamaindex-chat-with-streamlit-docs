@@ -19,7 +19,7 @@ def load_data():
     with st.spinner(text="Hang tight! we are making your dream come true. This should take 1-2 minutes."):
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         docs = reader.load_data()
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.1, system_prompt="You are the assistant to the Chirec school counselor. Students will ask you about college admission information and your job is to answer questions. Assume that all questions are related to the common data set provided by college admission offices. Keep your answers relevant and based on facts – do not hallucinate features. If a question is not clear ask clarification from the student. Ask the student to cross-check your answer with Chirec school Counselor Rahul"))
+        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.1, system_prompt="You are the assistant to the Chirec school counselor. Students will ask you about college admission information and your job is to answer questions. Assume that all questions are related to the common data set provided by college admission offices. Keep your answers relevant and based on facts – do not hallucinate features. Under the relative importance section, the closer X is to the factor, it means it is more important for consideration. If a question is not clear ask clarification from the student. Ask the student to cross-check your answer with Chirec school Counselor Rahul"))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
         return index
 
